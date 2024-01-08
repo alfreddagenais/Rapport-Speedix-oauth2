@@ -1,9 +1,9 @@
 {
-    "name": "sid.maestre/php-oauth2",
+    "name": "alfreddagenais/php-oauth2",
     "authors": [
         {
-            "name": "SidneyAllen",
-            "email": "sid.maestre@xero.com"
+            "name": "Alfred Dagenais",
+            "email": "jesuis@alfreddagenais.com"
         }
     ],
     "require": {

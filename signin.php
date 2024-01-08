@@ -23,8 +23,7 @@ $provider = new \League\OAuth2\Client\Provider\GenericProvider([
   'redirectUri'             => $redirectUri,
   'urlAuthorize'            => "{$appUrl}/oauth/authorize",
   'urlAccessToken'          => "{$appUrl}/oauth/token",
-  'urlResourceOwnerDetails' => "{$appUrl}/oauth/users"
-  //'urlResourceOwnerDetails' => 'https://api.xero.com/api.xro/2.0/Invoices'
+  'urlResourceOwnerDetails' => "{$appUrl}/oauth/users",
 ]);
 
 // If we don't have an authorization code then get one
@@ -51,7 +50,7 @@ if (!isset($_GET['code'])) {
   unset($_SESSION['oauth2state']);
   exit('Invalid state');
 
-  // Redirect back from Xero with code in query string param
+  // Redirect back with code in query string param
 } else {
 
   try {
@@ -65,7 +64,7 @@ if (!isset($_GET['code'])) {
     // refresh_token
     // personal_access
 
-    if( isset( $_SESSION['getcode'] ) ) {
+    if (isset($_SESSION['getcode'])) {
       echo "<h1>Congrats with code only</h1>";
 
       echo '<textarea style="width:100%;padding:20px;height:200px;">';
@@ -78,63 +77,6 @@ if (!isset($_GET['code'])) {
     $accessToken = $provider->getAccessToken('authorization_code', [
       'code' => $_GET['code'],
     ]);
-
-    // We have an access token, which we may use in authenticated requests 
-    // Retrieve the array of connected orgs and their tenant ids.      
-    /*$options['headers']['Accept'] = 'application/json';
-    $connectionsResponse = $provider->getAuthenticatedRequest(
-      'GET',
-      'https://api.xero.com/Connections',
-      $accessToken->getToken(),
-      $options
-    );
-    */
-
-    // $xeroTenantIdArray = $provider->getParsedResponse($connectionsResponse);
-
-    echo "<h1>Congrats</h1>";
-    echo "access token: " . $accessToken->getToken() . "<hr />";
-    echo "refresh token: " . $accessToken->getRefreshToken() . "<hr />";
-    // echo "xero tenant id: " . $xeroTenantIdArray[0]['tenantId'] . "<hr />";
-    echo "_GET: " . print_r($_GET, true) . "<hr />";
-
-    die();
-
-    /*
-    // The provider provides a way to get an authenticated API request for
-    // the service, using the access token; 
-    // the xero-tentant-id header is required
-    // the accept header can be either 'application/json' or 'application/xml'
-    $options['headers']['xero-tenant-id'] = $xeroTenantIdArray[0]['tenantId'];
-    $options['headers']['Accept'] = 'application/xml';
-
-    $request = $provider->getAuthenticatedRequest(
-      'GET',
-      'https://api.xero.com/api.xro/2.0/Organisation',
-      $accessToken,
-      $options
-    );
-
-    echo 'Organisation details:<br><textarea width: "300px"  height: 150px; row="50" cols="40">';
-    var_export($provider->getParsedResponse($request));
-    echo '</textarea>';
-
-
-    $data = "<Contacts><Contact><Name>ABC Limited</Name></Contact></Contacts>";
-    $options['body'] = $data;
-
-    $contactRequest = $provider->getAuthenticatedRequest(
-      'PUT',
-      'https://api.xero.com/api.xro/2.0/Contacts',
-      $accessToken,
-      $options
-    );
-
-    echo '<br><hr><br>New Contact:<br><textarea width: "300px"  height: 150px; row="50" cols="40">';
-    var_export($provider->getParsedResponse($contactRequest));
-    echo '</textarea>';
-
-    */
   } catch (Exception $e) {
     // Failed to get the access token or user details.
     echo '<pre>';
@@ -146,7 +88,6 @@ if (!isset($_GET['code'])) {
 }
 
 ?>
-
 <html>
 
 <head>
@@ -163,7 +104,14 @@ if (!isset($_GET['code'])) {
 </head>
 
 <body>
-  <h3>Success!</h3>
-</body>
+  <h1>Congrats Success!</h1>
 
+  <?php
+
+    echo "access token: " . $accessToken->getToken() . "<hr />";
+    echo "refresh token: " . $accessToken->getRefreshToken() . "<hr />";
+
+  ?>
+
+</body>
 </html>
