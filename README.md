@@ -6,7 +6,7 @@ Hello and welcome to the Rapport-Speedix-oauth2 Library! 👋
 
 ## About This Project 🌟
 
-This project was born out of a personal need and a gap I noticed in the Laravel community. As a developer working with Laravel and Laravel Passport, I found myself in search of a simple, straightforward solution for implementing OAuth2 connections. To my surprise, such a solution was hard to come by. 🤔
+This project was born out of a [personal need](https://rapportspeedix.com) and a gap I noticed in the Laravel community. As a developer working with Laravel and Laravel Passport, I found myself in search of a simple, straightforward solution for implementing OAuth2 connections. To my surprise, such a solution was hard to come by. 🤔
 
 That's when I decided to take matters into my own hands. 💡 The goal was clear: to create something that was not only useful for my own needs but also beneficial for the broader Laravel community. I wanted to build a tool that was easy to use, simple to integrate, and effective in managing OAuth2 authentication.
 
