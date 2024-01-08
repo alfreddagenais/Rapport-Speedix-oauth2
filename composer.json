@@ -1,13 +1,31 @@
 {
-    "name": "alfreddagenais/php-oauth2",
-    "authors": [
-        {
-            "name": "Alfred Dagenais",
-            "email": "jesuis@alfreddagenais.com"
-        }
-    ],
-    "require": {
-        "league/oauth2-client": "^2.5",
-        "vlucas/phpdotenv": "^5.6"
+  "name": "alfreddagenais/rapport-speedix-oauth2",
+  "description": "A Laravel library providing seamless integration with OAuth2 using Laravel Passport for efficient and secure API authentication.",
+  "authors": [
+    {
+      "name": "Alfred Dagenais",
+      "email": "jesuis@alfreddagenais.com"
     }
+  ],
+  "keywords": [
+    "laravel",
+    "oauth2",
+    "laravel-passport",
+    "api-authentication",
+    "security",
+    "oauth2-client",
+    "laravel-library",
+    "api-security",
+    "laravel-10",
+    "passport-authentication",
+    "web-security",
+    "authentication-library",
+    "oauth2-server"
+  ],
+  "homepage": "https://github.com/alfreddagenais/Rapport-Speedix-oauth2",
+  "license": "MIT",
+  "require": {
+    "league/oauth2-client": "^2.7",
+    "vlucas/phpdotenv": "^5.6"
+  }
 }

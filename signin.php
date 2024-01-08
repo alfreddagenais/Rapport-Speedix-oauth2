@@ -9,9 +9,8 @@ session_start();
 
 $clientId = $_ENV['CLIENT_ID'];
 $clientSecret = $_ENV['CLIENT_SECRET'];
-$redirectUri = 'http://localhost:9030/signin.php';
+$redirectUri = "{$_ENV['APP_OAUTH2_URL']}/signin.php";
 $appUrl = $_ENV['APP_URL'];
-
 
 if (isset($_GET['getcode'])) {
   $_SESSION['getcode'] = true;
@@ -108,10 +107,11 @@ if (!isset($_GET['code'])) {
 
   <?php
 
-    echo "access token: " . $accessToken->getToken() . "<hr />";
-    echo "refresh token: " . $accessToken->getRefreshToken() . "<hr />";
+  echo "access token: " . $accessToken->getToken() . "<hr />";
+  echo "refresh token: " . $accessToken->getRefreshToken() . "<hr />";
 
   ?>
 
 </body>
+
 </html>
