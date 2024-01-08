@@ -10,14 +10,20 @@ session_start();
 $clientId = $_ENV['CLIENT_ID'];
 $clientSecret = $_ENV['CLIENT_SECRET'];
 $redirectUri = 'http://localhost:9030/signin.php';
+$appUrl = $_ENV['APP_URL'];
+
+
+if (isset($_GET['getcode'])) {
+  $_SESSION['getcode'] = true;
+}
 
 $provider = new \League\OAuth2\Client\Provider\GenericProvider([
   'clientId'                => $clientId,
   'clientSecret'            => $clientSecret,
   'redirectUri'             => $redirectUri,
-  'urlAuthorize'            => 'https://cdb3-70-80-218-8.ngrok-free.app/oauth/authorize', // http://127.0.0.1:8001
-  'urlAccessToken'          => 'https://cdb3-70-80-218-8.ngrok-free.app/oauth/token',
-  'urlResourceOwnerDetails' => 'https://cdb3-70-80-218-8.ngrok-free.app/oauth/users'
+  'urlAuthorize'            => "{$appUrl}/oauth/authorize",
+  'urlAccessToken'          => "{$appUrl}/oauth/token",
+  'urlResourceOwnerDetails' => "{$appUrl}/oauth/users"
   //'urlResourceOwnerDetails' => 'https://api.xero.com/api.xro/2.0/Invoices'
 ]);
 
@@ -58,6 +64,15 @@ if (!isset($_GET['code'])) {
     // client_credentials
     // refresh_token
     // personal_access
+
+    if( isset( $_SESSION['getcode'] ) ) {
+      echo "<h1>Congrats with code only</h1>";
+
+      echo '<textarea style="width:100%;padding:20px;height:200px;">';
+      echo $_GET['code'];
+      echo '</textarea>';
+      die();
+    }
 
     // Try to get an access token using the authorization code grant.
     $accessToken = $provider->getAccessToken('authorization_code', [
@@ -120,7 +135,6 @@ if (!isset($_GET['code'])) {
     echo '</textarea>';
 
     */
-
   } catch (Exception $e) {
     // Failed to get the access token or user details.
     echo '<pre>';
