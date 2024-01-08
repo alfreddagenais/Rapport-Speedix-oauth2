@@ -73,11 +73,11 @@ VALUES
 ## Usage
 
 - Run the container and go to `index.php`
-- try `Sign-In` or `Sign-In, but get code Only`
+- try `Sign-In` or `Sign-In, and get code Only`
 
-For the code only is for tool to help to build an API Client like [Bruno](https://www.usebruno.com) or [Postman](https://www.postman.com/)
+For the `code` only is for tool to help to build an API Client like [Bruno](https://www.usebruno.com) or [Postman](https://www.postman.com/)
 
-### API Client
+### API Client with `code`
 
 ```bash
 curl --request POST \

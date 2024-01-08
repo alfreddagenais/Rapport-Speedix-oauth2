@@ -18,7 +18,7 @@ session_start();
   <br /><br />
   <a href="signin.php">Sign-In</a>
   <br /><hr /><br />
-  <a href="signin.php?getcode=true">Sign-In, but get code Only</a>
+  <a href="signin.php?getcode=true">Sign-In, and get code Only</a>
 </body>
 
 </html>
